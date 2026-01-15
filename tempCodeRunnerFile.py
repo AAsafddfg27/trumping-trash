@@ -17,7 +17,7 @@ while True:
         print(f'Error: {response.status_code}')
         print(response.text[500])
     else:
-        print('Ok')
+        True
     print('-' * 66)
 
     html = response.text
@@ -33,10 +33,11 @@ while True:
         text = q.find('span', class_='text').text
         author = q.find('small', class_='author').text
         res.append({'quote': text, 'author': author})
-    for i in res:
-        allq.append({'author': author, 'quote': text})
+    for block in res:
+        #allq.append({'author': author, 'quote': text})
+        print(block['author'], ':', block['quote'])
     page += 1
-        
-with open('quotes.json', 'w', encoding='utf-8') as f:
-    json.dump(allq, f, ensure_ascii=False, indent=2)
-print(f'Сохранено цитат:{len(allq)}')
+ # This is code you may use if you want       
+#with open('quotes.json', 'w', encoding='utf-8') as f:
+ #   json.dump(allq, f, ensure_ascii=False, indent=2)
+#print(f'Сохранено цитат:{len(allq)}')
